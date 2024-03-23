@@ -1,8 +1,6 @@
 package com.iarlen.reis.portfolioserver.DTOs;
 
-import com.iarlen.reis.portfolioserver.enums.Type;
 import com.iarlen.reis.portfolioserver.models.ProjectModel;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -10,8 +8,7 @@ public record ProjectRequest(
         @NotBlank
         String name,
 
-        @Enumerated
-        Type type,
+        String type,
 
         @NotBlank
         String image,

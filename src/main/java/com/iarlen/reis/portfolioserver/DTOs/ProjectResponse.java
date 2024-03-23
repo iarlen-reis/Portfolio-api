@@ -8,7 +8,7 @@ public record ProjectResponse(String id, String name, String type, String image,
         this(
                 project.getId().toString(),
                 project.getNome(),
-                project.getType().toString(),
+                project.getType(),
                 project.getImage(),
                 project.getDeploy(),
                 project.getGithub(),

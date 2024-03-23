@@ -1,7 +1,6 @@
 package com.iarlen.reis.portfolioserver.models;
 
 import com.iarlen.reis.portfolioserver.DTOs.ProjectRequest;
-import com.iarlen.reis.portfolioserver.enums.Type;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,8 +20,7 @@ public class ProjectModel {
 
     private String nome;
 
-    @Enumerated(EnumType.STRING)
-    private Type type;
+    private String type;
 
     private String image;
 
@@ -40,7 +38,7 @@ public class ProjectModel {
 
     private Boolean active = true;
 
-    public ProjectModel(String nome, Type type, String image, String deploy, String github, String description, String finished, String started, String[] technologies) {
+    public ProjectModel(String nome, String type, String image, String deploy, String github, String description, String finished, String started, String[] technologies) {
         this.nome = nome;
         this.type = type;
         this.image = image;
@@ -56,7 +54,7 @@ public class ProjectModel {
 
     public ProjectModel(ProjectRequest data) {
         this.nome = data.name();
-        this.type = data.type();
+        this.type = data.type().toLowerCase();
         this.image = data.image();
         this.deploy = data.deploy();
         this.github = data.github();
@@ -70,7 +68,7 @@ public class ProjectModel {
 
     public void update (ProjectRequest data) {
         this.nome = data.name();
-        this.type = data.type();
+        this.type = data.type().toLowerCase();
         this.image = data.image();
         this.deploy = data.deploy();
         this.github = data.github();
