@@ -22,8 +22,11 @@ public class ProjectService {
         return new ProjectRequest(project);
     }
 
-    public List<ProjectResponse> allProjects() {
-        return projectRepository.findAllByActiveIsTrue().stream().map(ProjectResponse::new).toList();
+    public List<ProjectResponse> allProjects(String filter) {
+        return projectRepository.findAllByTypeContainsAndActiveIsTrue(filter.toLowerCase())
+                .stream()
+                .map(ProjectResponse::new)
+                .toList();
     }
 
     public ProjectResponse getProject(UUID id) {

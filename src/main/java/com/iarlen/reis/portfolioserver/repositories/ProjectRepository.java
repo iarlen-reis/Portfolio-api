@@ -7,6 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface ProjectRepository extends JpaRepository<ProjectModel, UUID> {
-
-    List<ProjectModel> findAllByActiveIsTrue();
+    List<ProjectModel> findAllByTypeContainsAndActiveIsTrue(String filter);
 }

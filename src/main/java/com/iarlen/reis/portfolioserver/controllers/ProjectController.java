@@ -24,9 +24,10 @@ public class ProjectController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProjectResponse>> allProjects() {
-        return ResponseEntity.status(HttpStatus.OK).body(projectService.allProjects());
+    public ResponseEntity<List<ProjectResponse>> allProjects(@RequestParam String filter) {
+        return ResponseEntity.status(HttpStatus.OK).body(projectService.allProjects(filter));
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<ProjectResponse> getProject(@PathVariable UUID id) {
