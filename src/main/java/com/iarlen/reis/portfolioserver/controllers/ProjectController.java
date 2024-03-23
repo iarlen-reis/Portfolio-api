@@ -2,6 +2,7 @@ package com.iarlen.reis.portfolioserver.controllers;
 
 import com.iarlen.reis.portfolioserver.DTOs.ProjectRequest;
 import com.iarlen.reis.portfolioserver.DTOs.ProjectResponse;
+import com.iarlen.reis.portfolioserver.DTOs.ProjectResponseWithPagination;
 import com.iarlen.reis.portfolioserver.services.ProjectService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class ProjectController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProjectResponse>> allProjects(@RequestParam String filter) {
-        return ResponseEntity.status(HttpStatus.OK).body(projectService.allProjects(filter));
+    public ResponseEntity<ProjectResponseWithPagination> allProjects(@RequestParam String filter, @RequestParam(defaultValue = "1") String page) {
+        return ResponseEntity.status(HttpStatus.OK).body(projectService.allProjects(filter, page));
     }
 
 
