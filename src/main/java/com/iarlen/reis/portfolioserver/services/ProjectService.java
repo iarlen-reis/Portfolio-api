@@ -20,12 +20,6 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public ProjectRequest createProject(ProjectRequest data) {
-        ProjectModel project = projectRepository.save(new ProjectModel(data));
-
-        return new ProjectRequest(project);
-    }
-
     public ProjectResponseWithPagination allProjects(String filter, String page) {
         if(Integer.parseInt(page) < 1) {
             page = "1";
@@ -50,29 +44,4 @@ public class ProjectService {
     public ProjectResponse getProject(UUID id) {
         return new ProjectResponse(projectRepository.getReferenceById(id));
     }
-
-    @Transactional
-    public ProjectResponse updateProject(UUID id, ProjectRequest data) {
-        ProjectModel project = projectRepository.getReferenceById(id);
-        project.update(data);
-
-        return new ProjectResponse(project);
-    }
-
-    @Transactional
-    public ProjectResponse disableProject(UUID id) {
-        ProjectModel project = projectRepository.getReferenceById(id);
-        project.disable();
-
-        return new ProjectResponse(project);
-    }
-
-    @Transactional
-    public ProjectResponse enableProject(UUID id) {
-        ProjectModel project = projectRepository.getReferenceById(id);
-        project.enable();
-
-        return new ProjectResponse(project);
-    }
-
 }
