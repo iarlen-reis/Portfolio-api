@@ -4,6 +4,7 @@ import com.iarlen.reis.portfolioserver.DTOs.ProjectRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Table(name = "Project")
@@ -36,6 +37,9 @@ public class ProjectModel {
 
     private String[] technologies;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     private Boolean active = true;
 
     public ProjectModel(String nome, String type, String image, String deploy, String github, String description, String finished, String started, String[] technologies) {
@@ -48,6 +52,8 @@ public class ProjectModel {
         this.finished = finished;
         this.description = description;
         this.technologies = technologies;
+
+        this.createdAt = LocalDateTime.now();
 
         this.active = true;
     }
@@ -63,6 +69,7 @@ public class ProjectModel {
         this.technologies = data.technologies();
         this.description = data.description();
 
+        this.createdAt = LocalDateTime.now();
         this.active = true;
     }
 

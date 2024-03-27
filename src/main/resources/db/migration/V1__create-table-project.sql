@@ -9,5 +9,7 @@ CREATE TABLE project (
     active BOOLEAN NOT NULL DEFAULT TRUE,
     finishedIn VARCHAR(255) NOT NULL,
     startedIn VARCHAR(255) NOT NULL,
-    technologies TEXT[] NOT NULL
+    technologies TEXT[] NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
