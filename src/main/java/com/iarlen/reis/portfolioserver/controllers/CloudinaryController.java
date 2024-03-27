@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/portfolio")
@@ -20,20 +22,16 @@ public class CloudinaryController {
 
     @GetMapping("/images")
     public ResponseEntity<List<ImageResponse>> allImages() {
-        List<ImageResponse> images = this.cloudinaryService.cloudinaryAllImages();
+        return this.cloudinaryService.cloudinaryAllImages();
+    }
 
-        return ResponseEntity.ok(images);
+    @DeleteMapping("/images/delete/{slug}")
+    public ResponseEntity<Map> deleteImage(@PathVariable("slug") String slug) throws IOException {
+        return this.cloudinaryService.cloudinaryDelete(slug);
     }
 
     @PostMapping("/upload")
-    public ResponseEntity<ImageUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) {
-        try {
-            String imageUrl = this.cloudinaryService.cloudinaryUpload("portfolio", file);
-
-            return ResponseEntity.ok(new ImageUploadResponse(imageUrl));
-        } catch (IOException exception) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+    public ResponseEntity<ImageUploadResponse> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+            return this.cloudinaryService.cloudinaryUpload("portfolio", file);
     }
-
 }
