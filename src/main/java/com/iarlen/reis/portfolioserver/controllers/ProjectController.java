@@ -1,10 +1,8 @@
 package com.iarlen.reis.portfolioserver.controllers;
 
-import com.iarlen.reis.portfolioserver.DTOs.ProjectRequest;
 import com.iarlen.reis.portfolioserver.DTOs.ProjectResponse;
 import com.iarlen.reis.portfolioserver.DTOs.ProjectResponseWithPagination;
 import com.iarlen.reis.portfolioserver.services.ProjectService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

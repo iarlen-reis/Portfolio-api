@@ -1,12 +1,10 @@
 package com.iarlen.reis.portfolioserver.services;
 
 import com.iarlen.reis.portfolioserver.DTOs.Pagination;
-import com.iarlen.reis.portfolioserver.DTOs.ProjectRequest;
 import com.iarlen.reis.portfolioserver.DTOs.ProjectResponse;
 import com.iarlen.reis.portfolioserver.DTOs.ProjectResponseWithPagination;
 import com.iarlen.reis.portfolioserver.models.ProjectModel;
 import com.iarlen.reis.portfolioserver.repositories.ProjectRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
