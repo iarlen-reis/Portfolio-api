@@ -27,11 +27,16 @@ public class SecurityConfiguration {
             "/v2/api-docs/**",
             "/swagger-resources/**",
             "/api/portfolio/users/auth",
+            "/api/portfolio/projects",
+
     };
 
     private static final String[] ADMIN_WHITELIST = {
             "/api/portfolio/users",
-            "/api/portfolio/projects",
+            "api/portfolio/images",
+            "/api/portfolio/upload",
+            "/api/portfolio/admin/projects",
+            "/api/portfolio/admin/projects/**",
     };
 
     @Bean
@@ -42,9 +47,11 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, AUTH_WHITELIST)
                         .permitAll()
-                        .requestMatchers(HttpMethod.POST, ADMIN_WHITELIST)
-                        .hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, AUTH_WHITELIST)
+                        .permitAll()
                         .requestMatchers(HttpMethod.GET, ADMIN_WHITELIST)
+                        .hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, ADMIN_WHITELIST)
                         .hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, ADMIN_WHITELIST)
                         .hasRole("ADMIN")
