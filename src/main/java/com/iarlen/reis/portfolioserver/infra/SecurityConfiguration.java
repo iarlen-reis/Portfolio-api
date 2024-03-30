@@ -27,6 +27,7 @@ public class SecurityConfiguration {
             "/v2/api-docs/**",
             "/swagger-resources/**",
             "/api/portfolio/users/auth",
+            "/api/portfolio/projects/**",
             "/api/portfolio/projects",
 
     };
