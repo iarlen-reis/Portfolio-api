@@ -23,7 +23,7 @@ public class ProjectService {
             page = "1";
         }
 
-        PageRequest pageable = PageRequest.of(Integer.parseInt(page) - 1, 8);
+        PageRequest pageable = PageRequest.of(Integer.parseInt(page) - 1, 6);
 
         Page<ProjectModel> projects = projectRepository.findAllByTypeContainsAndActiveIsTrue(filter.toLowerCase(), pageable);
 
