@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface ProjectRepository extends JpaRepository<ProjectModel, UUID> {
-    Page<ProjectModel> findAllByTypeContainsAndActiveIsTrue(String filter, Pageable pageable);
+    Page<ProjectModel> findAllByTypeContainsAndActiveIsTrueAndOrderByCreatedAtDesc(String filter, Pageable pageable);
 
     Page<ProjectModel> findAllByTypeContainsOrderByCreatedAtDesc(String filter, Pageable pageable);
 }

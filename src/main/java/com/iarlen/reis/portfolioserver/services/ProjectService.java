@@ -25,7 +25,7 @@ public class ProjectService {
 
         PageRequest pageable = PageRequest.of(Integer.parseInt(page) - 1, 6);
 
-        Page<ProjectModel> projects = projectRepository.findAllByTypeContainsAndActiveIsTrue(filter.toLowerCase(), pageable);
+        Page<ProjectModel> projects = projectRepository.findAllByTypeContainsAndActiveIsTrueAndOrderByCreatedAtDesc(filter.toLowerCase(), pageable);
 
         long total = projects.getTotalElements();
         long pages = projects.getTotalPages();
